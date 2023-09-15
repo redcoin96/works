@@ -1,0 +1,12 @@
+.background {
+  background-image: url("/images/wallpaper1.jpg");
+  height: 100vh;
+  background-size: cover;
+  padding: 70px 24px;
+}
+
+.icons {
+  display: grid;
+  grid-template-columns: repeat(2, 100px);
+  grid-gap: 10px;
+}

@@ -1,95 +1,48 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+
+import React from "react";
+import { useState, ReactElement } from "react";
+import styles from "./page.module.scss";
+import Image from "next/image";
+import Modal from "@/components/modal/common/modal";
+import Icon from "@/components/icon/icon";
+import { icon } from "@/components/icon/icon.helper";
+import { useRecoilState } from "recoil";
+import { modalCountState } from "@/components/modal/store/atoms";
 
 export default function Home() {
+  const [modals, setModals] = useState<ReactElement[]>([]);
+  const [modalCount, setModalCount] = useRecoilState(modalCountState);
+
+  const openModal = (name: string) => {
+    const newModalCount = modalCount + 1;
+    setModalCount(newModalCount);
+
+    const newModal = (
+      <Modal key={newModalCount} initialZIndex={newModalCount}>
+        안녕하세요 저는 프론트엔드 개발자 박유현입니다.
+      </Modal>
+    );
+
+    setModals([...modals, newModal]);
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <div className={styles.background}>
+        <div className={styles.icons}>
+          <Icon icon={icon.about} onDoubleClick={() => openModal("about")} />
+          <Icon
+            icon={icon.projects}
+            onDoubleClick={() => openModal("projects")}
+          />
+          <Icon
+            icon={icon.contact}
+            onDoubleClick={() => openModal("contact")}
+          />
         </div>
+        {...modals}
       </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+    </>
+  );
 }
