@@ -35,7 +35,6 @@ export default function Modal({ initialZIndex, children }: ModalProps) {
             <Draggable
               positionOffset={{ x: "-50%", y: "-50%" }}
               handle=".bar"
-              bounds="body"
               onStart={handleClick}
             >
               <div className={styles.draggable} style={{ zIndex }}>

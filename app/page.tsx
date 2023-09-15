@@ -20,7 +20,7 @@ export default function Home() {
 
     const newModal = (
       <Modal key={newModalCount} initialZIndex={newModalCount}>
-        안녕하세요 저는 프론트엔드 개발자 박유현입니다.
+        안녕하세요.
       </Modal>
     );
 
