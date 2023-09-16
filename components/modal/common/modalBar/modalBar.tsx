@@ -13,7 +13,9 @@ export default function ModalBar({ onClose }: ModalBarProps) {
     <>
       <div className="bar" style={{ width: "100%" }}>
         <div className={styles.modalBar}>
-          <button className={styles.close} onClick={onClose} />
+          <button className={styles.close} onClick={onClose}>
+            <div className={styles.innerBorder}/>
+          </button>
         </div>
       </div>
     </>
