@@ -9,7 +9,7 @@ import { ModalProps } from "./modal.types";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRecoilState } from "recoil";
 import { modalCountState } from "../store/atoms";
-import TopBar from "./topBar/topBar";
+import TopBar from "./modalBar/modalBar";
 
 const cx = classNames.bind(styles);
 
@@ -59,7 +59,7 @@ export default function Modal({ initialZIndex, children }: ModalProps) {
                 >
                   <div className={styles.modal}>
                     <TopBar onClose={closeModal} />
-                    {children}
+                    <div className={styles.modalBody}>{children}</div>
                   </div>
                 </motion.div>
               </div>

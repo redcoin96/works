@@ -9,36 +9,38 @@ import Icon from "@/components/icon/icon";
 import { icon } from "@/components/icon/icon.helper";
 import { useRecoilState } from "recoil";
 import { modalCountState } from "@/components/modal/store/atoms";
+import TypingText from "@/components/typingText/typingText";
+import TopBar from "@/components/topBar/topBar";
+import { useModal } from "@/hooks/useModal";
 
 export default function Home() {
-  const [modals, setModals] = useState<ReactElement[]>([]);
-  const [modalCount, setModalCount] = useRecoilState(modalCountState);
-
-  const openModal = (name: string) => {
-    const newModalCount = modalCount + 1;
-    setModalCount(newModalCount);
-
-    const newModal = (
-      <Modal key={newModalCount} initialZIndex={newModalCount}>
-        안녕하세요.
-      </Modal>
-    );
-
-    setModals([...modals, newModal]);
-  };
+   const { openModal, modals } = useModal();
 
   return (
     <>
+      <TopBar />
       <div className={styles.background}>
         <div className={styles.icons}>
-          <Icon icon={icon.about} onDoubleClick={() => openModal("about")} />
+          <Icon icon={icon.about} onClick={() => openModal("about")} />
           <Icon
             icon={icon.projects}
-            onDoubleClick={() => openModal("projects")}
+            onClick={() => openModal("projects")}
           />
           <Icon
             icon={icon.contact}
-            onDoubleClick={() => openModal("contact")}
+            onClick={() => openModal("contact")}
+          />
+          <Icon
+            icon={icon.contact}
+            onClick={() => openModal("contact")}
+          />
+          <Icon
+            icon={icon.contact}
+            onClick={() => openModal("contact")}
+          />
+          <Icon
+            icon={icon.contact}
+            onClick={() => openModal("contact")}
           />
         </div>
         {...modals}

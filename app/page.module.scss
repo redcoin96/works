@@ -1,8 +1,9 @@
 .background {
-  background-image: url("/images/wallpaper1.jpg");
   height: 100vh;
+  background-image: url("/images/wallpaper1.jpg");
+  background-position: center;
   background-size: cover;
-  padding: 70px 24px;
+  padding: 60px 24px;
 }
 
 .icons {

@@ -3,5 +3,5 @@ export interface IconProps {
     img: string;
     title: string;
   },
-  onDoubleClick : () => void
+  onClick : () => void
 }
