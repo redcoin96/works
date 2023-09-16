@@ -12,37 +12,25 @@ import { modalCountState } from "@/components/modal/store/atoms";
 import TypingText from "@/components/typingText/typingText";
 import TopBar from "@/components/topBar/topBar";
 import { useModal } from "@/hooks/useModal";
+import MusicPlayer from "@/components/musicPlayer/musicPlayer";
 
 export default function Home() {
-   const { openModal, modals } = useModal();
+  const { openModal, modals } = useModal();
+
+  const openMusicModal = () => {openModal('music')}
 
   return (
     <>
-      <TopBar />
       <div className={styles.background}>
+        <TopBar />
         <div className={styles.icons}>
-          <Icon icon={icon.about} onClick={() => openModal("about")} />
-          <Icon
-            icon={icon.projects}
-            onClick={() => openModal("projects")}
-          />
-          <Icon
-            icon={icon.contact}
-            onClick={() => openModal("contact")}
-          />
-          <Icon
-            icon={icon.contact}
-            onClick={() => openModal("contact")}
-          />
-          <Icon
-            icon={icon.contact}
-            onClick={() => openModal("contact")}
-          />
-          <Icon
-            icon={icon.contact}
-            onClick={() => openModal("contact")}
-          />
+          <Icon icon={icon.about} onClick={openMusicModal} />
+          <Icon icon={icon.projects} onClick={openMusicModal} />
+          <Icon icon={icon.contact} onClick={openMusicModal} />
         </div>
+        <Modal initialZIndex={0} animation={false} content='music'>
+          <MusicPlayer/>
+        </Modal>
         {...modals}
       </div>
     </>

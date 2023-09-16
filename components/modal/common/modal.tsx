@@ -8,15 +8,21 @@ import classNames from "classnames/bind";
 import { ModalProps } from "./modal.types";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRecoilState } from "recoil";
-import { modalCountState } from "../store/atoms";
+import { modalCountState, currentModalState } from "../store/atoms";
 import TopBar from "./modalBar/modalBar";
 
 const cx = classNames.bind(styles);
 
-export default function Modal({ initialZIndex, children }: ModalProps) {
+export default function Modal({
+  initialZIndex,
+  children,
+  animation = true,
+  content,
+}: ModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const [modalCount, setModalCount] = useRecoilState(modalCountState);
   const [zIndex, setZIndex] = useState(initialZIndex);
+  const [currentModal, serCurrentModal] = useRecoilState(currentModalState);
 
   const handleClick = () => {
     if (zIndex < modalCount) {
@@ -25,7 +31,29 @@ export default function Modal({ initialZIndex, children }: ModalProps) {
     }
   };
 
-  const closeModal = () => setIsModalOpen(false);
+  const closeModal = () => {
+    setIsModalOpen(false);
+    const newCurrentModal = currentModal.filter((item) => item !== content);
+    serCurrentModal(newCurrentModal);
+  };
+
+  const animateVariants = animation
+    ? {
+        opacity: 1,
+        scale: 1,
+        transition: {
+          ease: "easeOut",
+          duration: 0.15,
+        },
+      }
+    : false;
+
+  const initialVariants = animation
+    ? {
+        opacity: 0,
+        scale: 0.5,
+      }
+    : false;
 
   return (
     <>
@@ -39,15 +67,8 @@ export default function Modal({ initialZIndex, children }: ModalProps) {
             >
               <div className={styles.draggable} style={{ zIndex }}>
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  animate={{
-                    opacity: 1,
-                    scale: 1,
-                    transition: {
-                      ease: "easeOut",
-                      duration: 0.15,
-                    },
-                  }}
+                  initial={initialVariants}
+                  animate={animateVariants}
                   exit={{
                     opacity: 0,
                     scale: 0.75,

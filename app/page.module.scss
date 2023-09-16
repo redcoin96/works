@@ -1,13 +1,17 @@
 .background {
   height: 100vh;
-  background-image: url("/images/wallpaper1.jpg");
+  // background-image: url("/images/wallpaper1.jpg");
+  // background-image: url("https://1.bp.blogspot.com/-etWWVd-NueM/XqsA2gZwW3I/AAAAAAAAQ94/ewDv4H2YWxoUYQpF1wxcZcfWn3N4TOFYgCLcBGAsYHQ/s1600/11def919f56a44204f7f9a8549bbaf029683ea4c.jpg");
+  // background-image: url("https://cdn.dribbble.com/users/3228050/screenshots/8001113/media/e85175f7fe3615ba9b8dd073c88cc5ca.jpg?resize=1600x1200&vertical=center");
+  background-color: pink;
   background-position: center;
   background-size: cover;
-  padding: 60px 24px;
+  padding: 10px;
 }
 
 .icons {
   display: grid;
   grid-template-columns: repeat(2, 100px);
   grid-gap: 10px;
+  padding: 40px 24px;
 }

@@ -12,9 +12,13 @@ export default function TopBar() {
   return (
     <>
       <div className={styles.topBar}>
-        <button onClick={() => openModal("about")}>about</button>
-        <CurrentTime />
-        <FullScreenBtn />
+        <div className={styles.right}>
+          {/* <button onClick={() => openModal("about")}>about</button> */}
+        </div>
+        <div className={styles.left}>
+          <CurrentTime />
+          <FullScreenBtn />
+        </div>
       </div>
       {...modals}
     </>
