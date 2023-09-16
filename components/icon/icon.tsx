@@ -6,10 +6,10 @@ import Image from "next/image";
 import Draggable from "react-draggable";
 import { IconProps } from "./icon.types";
 
-export default function Icon({ icon, onDoubleClick }: IconProps) {
+export default function Icon({ icon, onClick }: IconProps) {
   return (
     <Draggable>
-      <div className={styles.iconBox} onDoubleClick={onDoubleClick}>
+      <div className={styles.iconBox} onClick={onClick}>
         <div className={styles.icon}>
           <Image src={icon.img} alt="icon" fill draggable="false" />
         </div>

@@ -1,14 +1,14 @@
 export const icon = {
   about: {
     img: "/images/Internet.svg",
-    title: "About Me",
+    title: "소개",
   },
   projects: {
     img: "/images/Folder.svg",
-    title: "My Projects",
+    title: "프로젝트",
   },
   contact: {
     img: "/images/Information.svg",
-    title: "Contact",
+    title: "메세지",
   },
 };

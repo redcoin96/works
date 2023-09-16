@@ -9,7 +9,7 @@ import { ModalProps } from "./modal.types";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRecoilState } from "recoil";
 import { modalCountState } from "../store/atoms";
-import TopBar from "./topBar/topBar";
+import TopBar from "./modalBar/modalBar";
 
 const cx = classNames.bind(styles);
 
@@ -35,7 +35,6 @@ export default function Modal({ initialZIndex, children }: ModalProps) {
             <Draggable
               positionOffset={{ x: "-50%", y: "-50%" }}
               handle=".bar"
-              bounds="body"
               onStart={handleClick}
             >
               <div className={styles.draggable} style={{ zIndex }}>
@@ -60,7 +59,7 @@ export default function Modal({ initialZIndex, children }: ModalProps) {
                 >
                   <div className={styles.modal}>
                     <TopBar onClose={closeModal} />
-                    {children}
+                    <div className={styles.modalBody}>{children}</div>
                   </div>
                 </motion.div>
               </div>
