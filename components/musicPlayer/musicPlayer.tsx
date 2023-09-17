@@ -2,6 +2,10 @@
 
 import React, { useState, useEffect, ChangeEvent, useRef } from "react";
 import styles from './musicPlayer.module.scss'
+import Image from "next/image";
+import classNames from "classnames/bind";
+
+const cx = classNames.bind(styles)
 
 const MusicPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -27,10 +31,6 @@ const MusicPlayer: React.FC = () => {
 
   useEffect(() => {
     if (audioRef.current) {
-      // audioRef.current.addEventListener("canplay", () => {
-      //   audioRef.current!.play();
-      // });
-      // audioRef.current.load(); 
       audioRef.current.addEventListener("timeupdate", handleTimeUpdate);
       audioRef.current.addEventListener("loadedmetadata", handleLoadedMetadata);
 
@@ -61,11 +61,16 @@ const MusicPlayer: React.FC = () => {
     return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
 
+  const playingClass = isPlaying ? 'running' : 'paused'
+
   return (
     <div className={styles.musicPlayer}>
       <audio id="audio" ref={audioRef} loop={true}>
         <source src="/mp3/Gal Lev - Wave Art.mp3" type="audio/mp3" />
       </audio>
+      <div className={cx('cd', playingClass)}>
+      <Image src="/images/cd.png" alt="cd img" fill/>
+      </div>
       <button onClick={togglePlayPause}>
         {isPlaying ? "일시 정지" : "재생"}
       </button>
