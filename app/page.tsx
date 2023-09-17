@@ -13,11 +13,12 @@ import TypingText from "@/components/typingText/typingText";
 import TopBar from "@/components/topBar/topBar";
 import { useModal } from "@/hooks/useModal";
 import MusicPlayer from "@/components/musicPlayer/musicPlayer";
+import CustomCursor from "@/components/customCursor/customCursor";
 
 export default function Home() {
   const { openModal, modals } = useModal();
 
-  const openMusicModal = () => {openModal('music')}
+  const openMusicModal = () => openModal('music')
 
   return (
     <>
@@ -33,6 +34,7 @@ export default function Home() {
         </Modal>
         {...modals}
       </div>
+      <CustomCursor/>
     </>
   );
 }

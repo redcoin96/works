@@ -1,0 +1,13 @@
+.customCursor {
+  width: 15px;
+  height: 15px;
+  background-image: url("/images/cursor.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  cursor: none;
+  position: absolute;
+  pointer-events: none;
+  z-index: 9999;
+}

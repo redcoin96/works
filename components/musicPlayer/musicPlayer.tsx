@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, ChangeEvent, useRef } from "react";
-import RangeSlider from "./rangeSlider/rangeSlider";
+import styles from './musicPlayer.module.scss'
 
 const MusicPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -27,15 +27,16 @@ const MusicPlayer: React.FC = () => {
 
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.addEventListener("canplay", () => {
-        audioRef.current!.play();
-      });
-      audioRef.current.load(); // 오디오 로딩
+      // audioRef.current.addEventListener("canplay", () => {
+      //   audioRef.current!.play();
+      // });
+      // audioRef.current.load(); 
       audioRef.current.addEventListener("timeupdate", handleTimeUpdate);
       audioRef.current.addEventListener("loadedmetadata", handleLoadedMetadata);
 
       return () => {
         audioRef.current?.removeEventListener("timeupdate", handleTimeUpdate);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         audioRef.current?.removeEventListener(
           "loadedmetadata",
           handleLoadedMetadata
@@ -54,14 +55,6 @@ const MusicPlayer: React.FC = () => {
     }
   }, [isPlaying]);
 
-  useEffect(() => {
-    const audio = document.getElementById("audio") as HTMLAudioElement;
-    audio.addEventListener("timeupdate", () => {
-      setCurrentTime(audio.currentTime);
-      setDuration(audio.duration);
-    });
-  }, []);
-
   const formatTime = (time: number) => {
     const minutes = Math.floor(time / 60);
     const seconds = Math.floor(time % 60);
@@ -69,17 +62,17 @@ const MusicPlayer: React.FC = () => {
   };
 
   return (
-    <div>
-      <audio id="audio" ref={audioRef} autoPlay={true} loop={true}>
+    <div className={styles.musicPlayer}>
+      <audio id="audio" ref={audioRef} loop={true}>
         <source src="/mp3/Gal Lev - Wave Art.mp3" type="audio/mp3" />
       </audio>
       <button onClick={togglePlayPause}>
         {isPlaying ? "일시 정지" : "재생"}
       </button>
       <div>
-        <span>현재 시간: {formatTime(currentTime)}</span>
+        <span>{formatTime(currentTime)}</span>
         <span> / </span>
-        <span>전체 시간: {formatTime(duration)}</span>
+        <span>{formatTime(duration)}</span>
       </div>
       <input
         type="range"
@@ -93,7 +86,6 @@ const MusicPlayer: React.FC = () => {
           }
         }}
       />
-      {/* <RangeSlider /> */}
     </div>
   );
 };
