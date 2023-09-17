@@ -9,8 +9,8 @@
   transition: background-color 0.2s ease;
 }
 
-.iconBox:active {
-  background-color: rgb(251, 215, 255);
+.iconBox:hover {
+  background-color: rgb(251, 215, 255, 0.3);
 }
 
 .icon {

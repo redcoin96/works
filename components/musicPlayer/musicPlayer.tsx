@@ -4,6 +4,7 @@ import React, { useState, useEffect, ChangeEvent, useRef } from "react";
 import styles from './musicPlayer.module.scss'
 import Image from "next/image";
 import classNames from "classnames/bind";
+import { inherits } from "util";
 
 const cx = classNames.bind(styles)
 
@@ -71,8 +72,8 @@ const MusicPlayer: React.FC = () => {
       <div className={cx('cd', playingClass)}>
       <Image src="/images/cd.png" alt="cd img" fill/>
       </div>
-      <button onClick={togglePlayPause}>
-        {isPlaying ? "일시 정지" : "재생"}
+      <button onClick={togglePlayPause} className={styles.playPauseIcon}>
+        {isPlaying ?  <Image src="/images/pause.png" alt="pause icon" fill/> : <Image src="/images/play.png" alt="play icon" fill/>}
       </button>
       <div>
         <span>{formatTime(currentTime)}</span>

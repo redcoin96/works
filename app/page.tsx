@@ -18,7 +18,7 @@ import CustomCursor from "@/components/customCursor/customCursor";
 export default function Home() {
   const { openModal, modals } = useModal();
 
-  const openMusicModal = () => openModal('music')
+  const openMusicModal = () => openModal("music");
 
   return (
     <>
@@ -28,13 +28,23 @@ export default function Home() {
           <Icon icon={icon.about} onClick={openMusicModal} />
           <Icon icon={icon.projects} onClick={openMusicModal} />
           <Icon icon={icon.contact} onClick={openMusicModal} />
+          <Icon icon={icon.music} onClick={openMusicModal} />
         </div>
-        <Modal initialZIndex={0} animation={false} content='music'>
-          <MusicPlayer/>
+        <Modal initialZIndex={0} animation={false} content="main">
+          <div className={styles.main}>
+            <Image
+              src="https://i.pinimg.com/originals/70/8b/06/708b06aee06041ffee3db4c7da6336dd.jpg"
+              alt="background img"
+              fill
+            />
+          </div>
         </Modal>
+        {/* <Modal initialZIndex={0} animation={false} content='music'>
+          <MusicPlayer/>
+        </Modal> */}
         {...modals}
       </div>
-      <CustomCursor/>
+      <CustomCursor />
     </>
   );
 }

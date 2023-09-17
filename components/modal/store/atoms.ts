@@ -7,5 +7,5 @@ export const modalCountState = atom({
 
 export const currentModalState = atom({
   key: "currentModalState",
-  default: ['music'],
+  default: ['main'],
 });
