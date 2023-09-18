@@ -1,0 +1,20 @@
+/* InfiniteText.css */
+
+.infiniteLooperContainer {
+  overflow: hidden; /* 텍스트를 감출 영역을 설정합니다. */
+  white-space: pre;
+}
+
+.infiniteLooper {
+  display: inline-block;
+  animation: moveText 10s linear infinite; /* 텍스트를 이동시킬 애니메이션을 정의합니다. */
+}
+
+@keyframes moveText {
+  from {
+    transform: translateX(100%); /* 시작 위치를 화면 오른쪽으로 이동시킵니다. */
+  }
+  to {
+    transform: translateX(-100%); /* 끝 위치를 화면 왼쪽으로 이동시킵니다. */
+  }
+}

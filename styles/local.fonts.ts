@@ -19,3 +19,13 @@ export const neodgm = localFont({
     },
   ],
 });
+
+export const chicagoFLF = localFont({
+  src: [
+    {
+      path: "../public/fonts/chicagoFLF.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+});

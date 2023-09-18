@@ -1,7 +1,7 @@
 "use client";
 
 import "@/styles/global.scss";
-import { charcoal, neodgm } from "@/styles/local.fonts";
+import { chicagoFLF, neodgm } from "@/styles/local.fonts";
 import { RecoilRoot } from "recoil";
 
 export default function RootLayout({
@@ -11,7 +11,7 @@ export default function RootLayout({
 }) {
   return (
     <RecoilRoot>
-      <html lang="ko" className={(charcoal.className)}>
+      <html lang="ko" className={(chicagoFLF.className)}>
         <body>{children}</body>
       </html>
     </RecoilRoot>

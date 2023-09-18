@@ -11,11 +11,10 @@ const cx = classNames.bind(styles);
 export default function ModalBar({ onClose }: ModalBarProps) {
   return (
     <>
-      <div className="bar" style={{ width: "100%" }}>
+      <div className="bar" style={{ width: "100%", zIndex:"1" }}>
         <div className={styles.modalBar}>
-          <button className={styles.close} onClick={onClose}>
-            <div className={styles.innerBorder}/>
-          </button>
+          <button className={styles.close} onClick={onClose}/>
+          <div className={styles.title}>Welcome</div>
         </div>
       </div>
     </>

@@ -18,6 +18,14 @@
 }
 
 .main {
+  position: relative;
   width: 520px;
   aspect-ratio: 3 / 3;
+}
+
+.textBar {
+  position: relative;
+  // background-color: black;
+  // color: white;
+  // font-size: 12px;
 }
