@@ -14,6 +14,11 @@ export default function ModalBar({ onClose }: ModalBarProps) {
       <div className="bar" style={{ width: "100%", zIndex:"1" }}>
         <div className={styles.modalBar}>
           <button className={styles.close} onClick={onClose}/>
+          <div className={styles.stripe}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
           <div className={styles.title}>Welcome</div>
         </div>
       </div>

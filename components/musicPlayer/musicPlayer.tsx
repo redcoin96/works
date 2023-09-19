@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState, useEffect, ChangeEvent, useRef } from "react";
-import styles from './musicPlayer.module.scss'
+import styles from "./musicPlayer.module.scss";
 import Image from "next/image";
 import classNames from "classnames/bind";
 import { inherits } from "util";
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 const MusicPlayer: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -62,37 +62,45 @@ const MusicPlayer: React.FC = () => {
     return `${minutes}:${seconds.toString().padStart(2, "0")}`;
   };
 
-  const playingClass = isPlaying ? 'running' : 'paused'
+  const playingClass = isPlaying ? "running" : "paused";
 
   return (
-    <div className={styles.musicPlayer}>
+    <>
       <audio id="audio" ref={audioRef} loop={true}>
         <source src="/mp3/Gal Lev - Wave Art.mp3" type="audio/mp3" />
       </audio>
-      <div className={cx('cd', playingClass)}>
-      <Image src="/images/cd.png" alt="cd img" fill/>
+      <div className={styles.musicPlayer}>
+        <div className={cx("cd", playingClass)}>
+          <Image src="/images/cd.png" alt="cd img" fill />
+        </div>
+        <div className={styles.musicController}>
+          <button onClick={togglePlayPause} className={styles.playPauseIcon}>
+            {isPlaying ? (
+              <Image src="/images/pause.png" alt="pause icon" fill />
+            ) : (
+              <Image src="/images/play.png" alt="play icon" fill />
+            )}
+          </button>
+          <div className={styles.time}>
+            <span>{formatTime(currentTime)}</span>
+            <span> / </span>
+            <span>{formatTime(duration)}</span>
+          </div>
+          <input
+            type="range"
+            min={0}
+            max={duration || 100}
+            value={currentTime}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              if (audioRef.current) {
+                setCurrentTime(Number(e.target.value));
+                audioRef.current.currentTime = Number(e.target.value);
+              }
+            }}
+          />
+        </div>
       </div>
-      <button onClick={togglePlayPause} className={styles.playPauseIcon}>
-        {isPlaying ?  <Image src="/images/pause.png" alt="pause icon" fill/> : <Image src="/images/play.png" alt="play icon" fill/>}
-      </button>
-      <div>
-        <span>{formatTime(currentTime)}</span>
-        <span> / </span>
-        <span>{formatTime(duration)}</span>
-      </div>
-      <input
-        type="range"
-        min={0}
-        max={duration || 100}
-        value={currentTime}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          if (audioRef.current) {
-            setCurrentTime(Number(e.target.value));
-            audioRef.current.currentTime = Number(e.target.value);
-          }
-        }}
-      />
-    </div>
+    </>
   );
 };
 

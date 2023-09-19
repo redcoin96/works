@@ -3,6 +3,8 @@
 .infiniteLooperContainer {
   overflow: hidden; /* 텍스트를 감출 영역을 설정합니다. */
   white-space: pre;
+  background-color: black;
+  color: white;
 }
 
 .infiniteLooper {

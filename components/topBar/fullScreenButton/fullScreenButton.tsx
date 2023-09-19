@@ -1,18 +1,18 @@
 "use client";
 
 import React from "react";
-import { useState, useEffect } from "react";
 import styles from "./fullScreenButton.module.scss";
-import classNames from "classnames/bind";
-
-const cx = classNames.bind(styles);
+import { useFullscreen } from "@/hooks/useFullScreen";
 
 export default function FullScreenBtn() {
-  const enterFullscreen = () => {
-    const element = document.documentElement;
-    if (element.requestFullscreen) {
-      element.requestFullscreen();
-    }
-  };
-  return <button className={styles.fullScreenButton} onClick={enterFullscreen}>full</button>;
+  const { isFullscreen, openfullscreen, closefullscreen } = useFullscreen();
+
+  return (
+    <button
+      className={styles.fullScreen}
+      onClick={isFullscreen ? closefullscreen : openfullscreen}
+    >
+      {isFullscreen ? "Exit FullScreen" : "FullScreen"}
+    </button>
+  );
 }

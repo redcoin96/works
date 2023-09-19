@@ -9,7 +9,7 @@ import TypingText from "@/components/typingText/typingText";
 import { ReactElement } from "react";
 import MusicPlayer from "@/components/musicPlayer/musicPlayer";
 
-export function useModal() {
+export const useModal = () => {
   const [modals, setModals] = useState<ReactElement[]>([]);
   const [modalCount, setModalCount] = useRecoilState(modalCountState);
   const [currentModal, serCurrentModal] = useRecoilState(currentModalState);
