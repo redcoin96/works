@@ -17,15 +17,10 @@
   padding: 40px 24px;
 }
 
-.main {
-  position: relative;
-  width: 520px;
-  aspect-ratio: 3 / 3;
-}
+.infiniteLooper {
+  display: none;
 
-.textBar {
-  position: relative;
-  // background-color: black;
-  // color: white;
-  // font-size: 12px;
+  @include tablet {
+    display: block;
+  }
 }

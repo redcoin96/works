@@ -1,22 +1,28 @@
-/* InfiniteText.css */
-
-.infiniteLooperContainer {
-  overflow: hidden; /* 텍스트를 감출 영역을 설정합니다. */
-  white-space: pre;
-  background-color: black;
-  color: white;
-}
-
 .infiniteLooper {
-  display: inline-block;
-  animation: moveText 10s linear infinite; /* 텍스트를 이동시킬 애니메이션을 정의합니다. */
+  background-color: black;
+  padding: 3px 5px;
 }
 
-@keyframes moveText {
-  from {
-    transform: translateX(100%); /* 시작 위치를 화면 오른쪽으로 이동시킵니다. */
+.infiniteLooperInner {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  color: white;
+
+  span {
+    animation: textLoop 1s linear infinite;
+    font-size: 12px;
+    padding-right: 10px;
   }
-  to {
-    transform: translateX(-100%); /* 끝 위치를 화면 왼쪽으로 이동시킵니다. */
+}
+
+@keyframes textLoop {
+  0% {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0)
+  }
+  100% {
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0)
   }
 }

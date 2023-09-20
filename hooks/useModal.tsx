@@ -14,7 +14,7 @@ export const useModal = () => {
   const [modalCount, setModalCount] = useRecoilState(modalCountState);
   const [currentModal, serCurrentModal] = useRecoilState(currentModalState);
 
-  const openModal = (content: string) => {
+  const openModal = (title: string, content: string) => {
     if (!currentModal.includes(content)) {
       const newModalCount = modalCount + 1;
       setModalCount(newModalCount);
@@ -24,6 +24,7 @@ export const useModal = () => {
           key={newModalCount}
           initialZIndex={newModalCount}
           content={content}
+          title={title}
         >
           <MusicPlayer />
         </Modal>

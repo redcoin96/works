@@ -14,6 +14,7 @@ import TopBar from "./modalBar/modalBar";
 const cx = classNames.bind(styles);
 
 export default function Modal({
+  title,
   initialZIndex,
   children,
   animation = true,
@@ -56,7 +57,7 @@ export default function Modal({
     : false;
 
   return (
-    <>
+    <div className={cx(content)}>
       <AnimatePresence>
         {isModalOpen && (
           <div onClick={handleClick}>
@@ -79,7 +80,7 @@ export default function Modal({
                   }}
                 >
                   <div className={styles.modal}>
-                    <TopBar onClose={closeModal} />
+                    <TopBar title={title} onClose={closeModal} />
                     <div className={styles.modalBody}>{children}</div>
                   </div>
                 </motion.div>
@@ -88,6 +89,6 @@ export default function Modal({
           </div>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 }

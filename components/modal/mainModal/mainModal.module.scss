@@ -1,0 +1,13 @@
+.mainModalBody {
+  position: relative;
+  width: 520px;
+  aspect-ratio: 3 / 3;
+
+  @include mobile {
+    width: 100%;
+  }
+}
+
+.textBar {
+  position: relative;
+}

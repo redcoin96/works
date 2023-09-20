@@ -1,13 +1,30 @@
-'use client'
+"use client";
 
-import React from 'react';
-import styles from './infiniteLooper.module.scss'; 
+import React from "react";
+import styles from "./infiniteLooper.module.scss";
 
-const InfiniteLooper = ({ text } : {text: string}) => {
+const InfiniteLooper = ({ text }: { text: string }) => {
   return (
-    <div className={styles.infiniteLooperContainer}>
-      <div className={styles.infiniteLooper}>
-        {text.repeat(4)}
+    <div className={styles.infiniteLooper}>
+      <div className={styles.infiniteLooperInner}>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
+        <span>{text}</span>
       </div>
     </div>
   );
