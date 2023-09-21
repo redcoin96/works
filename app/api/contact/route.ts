@@ -6,9 +6,9 @@ export async function POST(req: Request) {
 
   try {
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
+      host: "smtp.naver.com",
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.AUTH_USER,
         pass: process.env.AUTH_PASS,
@@ -16,10 +16,13 @@ export async function POST(req: Request) {
     });
 
     const mailOptions = {
-      from: email, // 송신할 이메일
-      to: process.env.AUTH_USER, // 수신할 이메일
+      from: process.env.AUTH_USER, 
+      to: process.env.AUTH_USER, 
       subject: subject,
-      html: message,
+      html: `
+        <p>${message}</p><br/>
+        <p>발신메일 : ${email}</p>
+      `,
     };
     transporter.sendMail(mailOptions);
     return NextResponse.json({ msg: "성공", status: 200 });
