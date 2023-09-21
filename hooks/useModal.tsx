@@ -8,6 +8,8 @@ import Modal from "@/components/modal/common/modal";
 import TypingText from "@/components/typingText/typingText";
 import { ReactElement } from "react";
 import MusicPlayer from "@/components/musicPlayer/musicPlayer";
+import About from "@/components/modal/about/about";
+import Contact from "@/components/modal/contact/contact";
 
 export const useModal = () => {
   const [modals, setModals] = useState<ReactElement[]>([]);
@@ -15,6 +17,20 @@ export const useModal = () => {
   const [currentModal, serCurrentModal] = useRecoilState(currentModalState);
 
   const openModal = (title: string, content: string) => {
+    let modalContent;
+
+    switch (content) {
+      case "about":
+        modalContent = <About />;
+        break;
+      case "music":
+        modalContent = <MusicPlayer />;
+        break;
+      case "contact":
+        modalContent = <Contact />;
+        break;
+    }
+
     if (!currentModal.includes(content)) {
       const newModalCount = modalCount + 1;
       setModalCount(newModalCount);
@@ -26,14 +42,14 @@ export const useModal = () => {
           content={content}
           title={title}
         >
-          <MusicPlayer />
+          {modalContent}
         </Modal>
       );
 
       setModals([...modals, newModal]);
-      serCurrentModal([...currentModal, content])
+      serCurrentModal([...currentModal, content]);
     }
   };
 
   return { openModal, modals };
-}
+};

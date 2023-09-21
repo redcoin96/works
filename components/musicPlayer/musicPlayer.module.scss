@@ -1,7 +1,5 @@
 .musicPlayer {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  width: 300px;
 
   input[type="range"] {
     -webkit-appearance: none;
@@ -47,9 +45,14 @@
   }
 }
 
-.playPauseIcon {
+.musicController {
+  display: flex;
+  gap: 10px;
+}
+
+.playPause, .previous, .next {
   position: relative;
-  width: 5px;
+  width: 10px;
   height: 9px;
 }
 

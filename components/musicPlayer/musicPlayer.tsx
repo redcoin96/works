@@ -5,6 +5,7 @@ import styles from "./musicPlayer.module.scss";
 import Image from "next/image";
 import classNames from "classnames/bind";
 import { inherits } from "util";
+import Equalizer from "./equalizer/equalizer";
 
 const cx = classNames.bind(styles);
 
@@ -70,23 +71,32 @@ const MusicPlayer: React.FC = () => {
         <source src="/mp3/Gal Lev - Wave Art.mp3" type="audio/mp3" />
       </audio>
       <div className={styles.musicPlayer}>
-        <div className={cx("cd", playingClass)}>
+        {/* <div className={cx("cd", playingClass)}>
           <Image src="/images/cd.png" alt="cd img" fill />
-        </div>
+        </div> */}
+        <Equalizer/>
+        <div className={styles.buttom}>
         <div className={styles.musicController}>
-          <button onClick={togglePlayPause} className={styles.playPauseIcon}>
+          <button onClick={togglePlayPause} className={styles.previous}>
+            <Image src="/images/previous.png" alt="pause icon" fill />
+          </button>
+          <button onClick={togglePlayPause} className={styles.playPause}>
             {isPlaying ? (
               <Image src="/images/pause.png" alt="pause icon" fill />
             ) : (
               <Image src="/images/play.png" alt="play icon" fill />
             )}
           </button>
+          <button onClick={togglePlayPause} className={styles.next}>
+            <Image src="/images/next.png" alt="pause icon" fill />
+          </button>
+          </div>
           <div className={styles.time}>
             <span>{formatTime(currentTime)}</span>
             <span> / </span>
             <span>{formatTime(duration)}</span>
           </div>
-          <input
+          {/* <input
             type="range"
             min={0}
             max={duration || 100}
@@ -97,7 +107,7 @@ const MusicPlayer: React.FC = () => {
                 audioRef.current.currentTime = Number(e.target.value);
               }
             }}
-          />
+          /> */}
         </div>
       </div>
     </>

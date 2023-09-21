@@ -14,8 +14,10 @@ export default function Home() {
   const { openModal, modals } = useModal();
 
   const openMusicModal = () => openModal("music", "music");
+  const openAboutModal = () => openModal("about", "about");
+  const openContactModal = () => openModal("contact", "contact");
 
-  const mainText = "Hello, World"
+  const mainText = "Hello, 'Yu-Hyun' World!"
 
   return (
     <>
@@ -25,9 +27,9 @@ export default function Home() {
         <InfiniteLooper text={mainText}/>
         </div>
         <div className={styles.icons}>
-          <Icon icon={icon.about} onClick={openMusicModal} />
+          <Icon icon={icon.about} onClick={openAboutModal} />
           <Icon icon={icon.projects} onClick={openMusicModal} />
-          <Icon icon={icon.contact} onClick={openMusicModal} />
+          <Icon icon={icon.contact} onClick={openContactModal} />
           <Icon icon={icon.music} onClick={openMusicModal} />
         </div>
         <MainModal title="Welcome" text={mainText}/>
