@@ -24,7 +24,7 @@ export async function POST(req: Request) {
         <p>발신메일 : ${email}</p>
       `,
     };
-    transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
     return NextResponse.json({ msg: "성공", status: 200 });
   } catch (err) {
     return NextResponse.json({ msg: "실패", status: 500 });
