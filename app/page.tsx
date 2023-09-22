@@ -4,11 +4,15 @@ import React from "react";
 import styles from "./page.module.scss";
 import Icon from "@/components/icon/icon";
 import { icon } from "@/components/icon/icon.helper";
-import TopBar from "@/components/topBar/topBar";
+// import TopBar from "@/components/topBar/topBar";
 import { useModal } from "@/hooks/useModal";
 import CustomCursor from "@/components/customCursor/customCursor";
 import MainModal from "@/components/modal/mainModal/mainModal";
 import InfiniteLooper from "@/components/infiniteLooper/infiniteLooper";
+
+// const TopBar = dynamic(() => import("@/components/topBar/topBar"), {
+//   ssr: false
+// });
 
 export default function Home() {
   const { openModal, modals } = useModal();
@@ -22,7 +26,7 @@ export default function Home() {
   return (
     <>
       <div className={styles.background}>
-        <TopBar />
+        {/* <TopBar /> */}
         <div className={styles.infiniteLooper}>
         <InfiniteLooper text={mainText}/>
         </div>
