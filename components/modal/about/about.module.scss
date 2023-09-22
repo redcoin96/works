@@ -13,13 +13,11 @@
     word-break: keep-all;
     margin-bottom: 15px;
   }
+
   .contact {
-    width: 100%;
-    border: 1px solid black;
-    padding: 7px;
-    border-radius: 4px;
-    font-size: 12px;
+    @include button-style;
   }
+
   .contact:hover {
     background-color: $pink-hover;
   }

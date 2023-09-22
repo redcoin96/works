@@ -3,12 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./contact.module.scss";
 import { neodgm } from "@/styles/local.fonts";
-
-type Email = {
-  email: string;
-  subject: string;
-  message: string;
-};
+import { sendEmail } from "@/api/sendEmail";
 
 export default function Contact() {
   const emailRef = useRef<HTMLInputElement>(null);
@@ -39,27 +34,6 @@ export default function Contact() {
     }
   };
 
-  const sendEmail = async ({ email, subject, message }: Email) => {
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          subject,
-          message,
-        }),
-      });
-
-      const data = await res.json();
-      console.log(data);
-    } catch (err) {
-      console.log("실패함");
-    }
-  };
-
   useEffect(() => {
     const showSumbitComplte = setTimeout(() => {
       setSubmitComplete(false);
@@ -71,25 +45,22 @@ export default function Contact() {
   }, [submitComplete]);
 
   return (
-    <div className={styles.about}>
+    <div className={styles.contact}>
       <h2>Contact</h2>
-      <div className={styles.email_form_container}>
-        <form className={styles.contact_form} onSubmit={submitHandler}>
-          <div className={styles.email_input}>
-            <label htmlFor="email">Your Email</label>
-            <input ref={emailRef} type={"email"} name="email" id="email" />
+      <div className={styles.contactFormContainer}>
+        <form className={styles.contactForm} onSubmit={submitHandler}>
+          <div className={styles.emailInput}>
+            <label htmlFor="email">Email:</label>
+            <input ref={emailRef} type={"text"} name="email" id="email" autoComplete="off"/>
           </div>
-          <div className={styles.subject_input}>
-            <label htmlFor="subject">Subject</label>
-            <input ref={subjectRef} type={"text"} name="subject" id="subject" />
+          <div className={styles.subjectInput}>
+            <label htmlFor="subject">Title:</label>
+            <input ref={subjectRef} type={"text"} name="subject" id="subject" autoComplete="off"/>
           </div>
-          <div className={styles.message_input}>
-            <label htmlFor="message">Message</label>
-            <div>
-              <textarea ref={messageRef} name="message" id="message" />
-            </div>
+          <div className={styles.messageInput}>
+            <textarea ref={messageRef} name="message" id="message" className={(neodgm.className)} spellCheck="false"/>
           </div>
-          <div className={styles.button_container}>
+          <div className={styles.buttonContainer}>
             <button className={styles.button}>Submit</button>
           </div>
         </form>

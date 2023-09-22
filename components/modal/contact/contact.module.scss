@@ -1,26 +1,41 @@
-.about {
-  width: 300px;
+.contact {
+  width: 500px;
   padding: 20px;
 
-  h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
+  h2, .emailInput, .subjectInput, .messageInput {
+    margin-bottom: 10px;
   }
 
-  p {
-    font-size: 12px;
-    line-height: 1.4;
-    word-break: keep-all;
-    margin-bottom: 15px;
+  .emailInput, .subjectInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    input {
+      width: 100%;
+      height: 25px;
+    }
   }
-  .contact {
-    width: 100%;
+
+  label {
+    font-size: 12px;
+    width: 50px;
+  }
+
+  input, textarea {
     border: 1px solid black;
-    padding: 7px;
-    border-radius: 4px;
-    font-size: 12px;
+    border-radius: 2px;
   }
-  .contact:hover {
-    background-color: $pink-hover;
+
+  .messageInput {
+    textarea {
+      width: 100%;
+      height: 200px;
+      padding: 10px
+    }
+  }
+
+  .button {
+    @include button-style;
   }
 }
