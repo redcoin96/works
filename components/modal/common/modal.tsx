@@ -19,6 +19,8 @@ export default function Modal({
   children,
   animation = true,
   content,
+  width,
+  backgroundColor
 }: ModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const [modalCount, setModalCount] = useRecoilState(modalCountState);
@@ -66,7 +68,7 @@ export default function Modal({
               handle=".bar"
               onStart={handleClick}
             >
-              <div className={styles.draggable} style={{ zIndex }}>
+              <div className={styles.draggable} style={{ zIndex, width }}>
                 <motion.div
                   initial={initialVariants}
                   animate={animateVariants}
@@ -79,7 +81,7 @@ export default function Modal({
                     },
                   }}
                 >
-                  <div className={styles.modal}>
+                  <div className={styles.modal} style={{ backgroundColor }}>
                     <TopBar title={title} onClose={closeModal} />
                     <div className={styles.modalBody}>{children}</div>
                   </div>

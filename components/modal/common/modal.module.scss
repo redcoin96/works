@@ -3,13 +3,8 @@
   top: 50%;
   left: 50%;
 
-  @include tablet {
-    max-width: 90%;
-    // padding: 30px;
-  }
-
   @include mobile {
-    // padding: 20px;
+    width: 90%;
   }
 }
 

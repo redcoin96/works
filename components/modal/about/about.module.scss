@@ -1,5 +1,4 @@
 .about {
-  width: 300px;
   padding: 20px;
 
   h2 {
@@ -19,6 +18,6 @@
   }
 
   .contact:hover {
-    background-color: $pink-hover;
+    @include button-style-hover;
   }
 }

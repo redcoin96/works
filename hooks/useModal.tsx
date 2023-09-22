@@ -16,7 +16,7 @@ export const useModal = () => {
   const [modalCount, setModalCount] = useRecoilState(modalCountState);
   const [currentModal, serCurrentModal] = useRecoilState(currentModalState);
 
-  const openModal = (title: string, content: string) => {
+  const openModal = (title: string, content: string, width?: number, backgroundColor?:string) => {
     let modalContent;
 
     switch (content) {
@@ -41,6 +41,8 @@ export const useModal = () => {
           initialZIndex={newModalCount}
           content={content}
           title={title}
+          width={width}
+          backgroundColor={backgroundColor}
         >
           {modalContent}
         </Modal>

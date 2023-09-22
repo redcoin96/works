@@ -4,4 +4,6 @@ export interface ModalProps {
   children: React.ReactNode,
   animation?: boolean
   content:string
+  width?: number
+  backgroundColor?: string
 }

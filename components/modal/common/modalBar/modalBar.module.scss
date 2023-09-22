@@ -19,7 +19,7 @@
 }
 
 .close:hover {
-  background-color: $pink-hover;
+  @include button-style-hover;
 }
 
 .stripe {
