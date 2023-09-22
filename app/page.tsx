@@ -1,9 +1,10 @@
-import Main from "@/components/main/main"
+import dynamic from "next/dynamic";
 
-// const TopBar = dynamic(() => import("@/components/topBar/topBar"), {
-//   ssr: false
-// });
+const Main = dynamic(() => import("@/components/main/main"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 export default function Home() {
-  return <Main/>
+  return <Main />;
 }

@@ -9,12 +9,9 @@ import { useModal } from "@/hooks/useModal";
 import CustomCursor from "@/components/customCursor/customCursor";
 import MainModal from "@/components/modal/mainModal/mainModal";
 import InfiniteLooper from "@/components/infiniteLooper/infiniteLooper";
+// import dynamic from 'next/dynamic'
 
-// const TopBar = dynamic(() => import("@/components/topBar/topBar"), {
-//   ssr: false
-// });
-
-export default function Main() {
+export default function Home() {
   const { openModal, modals } = useModal();
 
   const openMusicModal = () => openModal("music", "music");

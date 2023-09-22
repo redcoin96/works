@@ -8,8 +8,9 @@ import { useFullscreen } from "@/hooks/useFullScreen";
 
 export default function TopBar() {
   const { openModal, modals } = useModal();
-  const currentTime = useCurrentTime();
   const { isFullscreen, openfullscreen, closefullscreen } = useFullscreen();
+
+  const currentTime = useCurrentTime();
 
   return (
     <>
