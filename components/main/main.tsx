@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import styles from "./page.module.scss";
+import styles from "./main.module.scss";
 import Icon from "@/components/icon/icon";
 import { icon } from "@/components/icon/icon.helper";
 import TopBar from "@/components/topBar/topBar";
