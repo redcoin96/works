@@ -2,6 +2,6 @@ export interface IconProps {
   icon: {
     img: string;
     title: string;
-  },
-  onClick : () => void
+  };
+  onClick: (e: React.MouseEvent<HTMLElement>) => void;
 }

@@ -1,14 +1,13 @@
 "use client";
 
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./modal.module.scss";
 import Draggable from "react-draggable";
 import classNames from "classnames/bind";
 import { ModalProps } from "./modal.types";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRecoilState } from "recoil";
-import { modalCountState, currentModalState } from "../store/atoms";
+import { modalCountState, currentModalState, topModalZIndexState } from "../store/atoms";
 import TopBar from "./modalBar/modalBar";
 
 const cx = classNames.bind(styles);
@@ -20,19 +19,23 @@ export default function Modal({
   animation = true,
   content,
   width,
-  backgroundColor
+  backgroundColor,
 }: ModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(true);
-  const [modalCount, setModalCount] = useRecoilState(modalCountState);
   const [zIndex, setZIndex] = useState(initialZIndex);
+  const [modalCount, setModalCount] = useRecoilState(modalCountState);
   const [currentModal, serCurrentModal] = useRecoilState(currentModalState);
+  const [topModal, setTopModal] = useRecoilState(topModalZIndexState);
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     if (zIndex < modalCount) {
+      e.stopPropagation()
+      setTopModal(content)
       setModalCount((prevCount) => prevCount + 1);
       setZIndex(modalCount);
     }
   };
+
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -58,6 +61,15 @@ export default function Modal({
       }
     : false;
 
+  useEffect(()=>{
+    console.log(`topModal: ${topModal}, modalCount: ${modalCount}`)
+    if(content === topModal){
+      setModalCount((prevCount) => prevCount + 1);
+      setZIndex(modalCount);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[topModal])
+
   return (
     <div className={cx(content)}>
       <AnimatePresence>
@@ -66,7 +78,7 @@ export default function Modal({
             <Draggable
               positionOffset={{ x: "-50%", y: "-50%" }}
               handle=".bar"
-              onStart={handleClick}
+              // onStart={handleClick(e)}
             >
               <div className={styles.draggable} style={{ zIndex, width }}>
                 <motion.div
@@ -83,7 +95,7 @@ export default function Modal({
                 >
                   <div className={styles.modal} style={{ backgroundColor }}>
                     <TopBar title={title} onClose={closeModal} />
-                    <div className={styles.modalBody}>{children}</div>
+                      <div className={styles.modalBody}>{children}</div>
                   </div>
                 </motion.div>
               </div>

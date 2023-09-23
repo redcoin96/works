@@ -3,8 +3,16 @@
 import React from "react";
 import styles from "./about.module.scss";
 import { neodgm } from "@/styles/local.fonts";
+import { useRecoilState } from "recoil";
+import {topModalZIndexState } from "../store/atoms";
 
 export default function About() {
+  const [topModal, setTopModal] = useRecoilState(topModalZIndexState);
+  const handleClick = (e: React.MouseEvent<HTMLElement>)=> {
+    e.stopPropagation()
+    setTopModal('contact')
+  }
+  
   return (
     <div className={styles.about}>
       <h2>About</h2>
@@ -14,7 +22,7 @@ export default function About() {
         원활하며 디자이너와 백엔드 개발자와 협동하여 프로젝트를 제작한 경험이 있습니다.
         JavaScript, TypeScript, HTML, React, Next.js등의 기술스택을 사용하고 있습니다.
       </p>
-      <button className={styles.contact}>Contact Me</button>
+      <button className={styles.contact} onClick={handleClick}>Contact Me</button>
     </div>
   );
 }

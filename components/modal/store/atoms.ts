@@ -9,3 +9,8 @@ export const currentModalState = atom({
   key: "currentModalState",
   default: ['main'],
 });
+
+export const topModalZIndexState = atom({
+  key: "topModalZIndexState",
+  default: 'main',
+});

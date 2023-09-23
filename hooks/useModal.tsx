@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   modalCountState,
   currentModalState,
+  topModalZIndexState,
 } from "@/components/modal/store/atoms";
 import Modal from "@/components/modal/common/modal";
 import TypingText from "@/components/typingText/typingText";
@@ -15,13 +16,14 @@ export const useModal = () => {
   const [modals, setModals] = useState<ReactElement[]>([]);
   const [modalCount, setModalCount] = useRecoilState(modalCountState);
   const [currentModal, serCurrentModal] = useRecoilState(currentModalState);
+  const [topModal, setTopModal] = useRecoilState(topModalZIndexState);
 
   const openModal = (title: string, content: string, width?: number, backgroundColor?:string) => {
     let modalContent;
 
     switch (content) {
       case "about":
-        modalContent = <About />;
+        modalContent = <About/>;
         break;
       case "music":
         modalContent = <MusicPlayer />;
@@ -34,6 +36,7 @@ export const useModal = () => {
     if (!currentModal.includes(content)) {
       const newModalCount = modalCount + 1;
       setModalCount(newModalCount);
+      setTopModal(content)
 
       const newModal = (
         <Modal

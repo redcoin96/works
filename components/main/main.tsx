@@ -9,13 +9,29 @@ import { useModal } from "@/hooks/useModal";
 import CustomCursor from "@/components/customCursor/customCursor";
 import MainModal from "@/components/modal/mainModal/mainModal";
 import InfiniteLooper from "@/components/infiniteLooper/infiniteLooper";
+import { useRecoilState } from "recoil";
+import { topModalZIndexState } from "../modal/store/atoms";
 
 export default function Home() {
+  const [topModal, setTopModal] = useRecoilState(topModalZIndexState);
+
   const { openModal, modals } = useModal();
 
-  const openMusicModal = () => openModal("music", "music");
-  const openAboutModal = () => openModal("about", "about", 300, '#fff1d1');
-  const openContactModal = () => openModal("contact", "contact");
+  const openMusicModal = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation()
+    openModal("music", "music"); 
+    setTopModal('music')
+  }
+  const openAboutModal = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation()
+    openModal("about", "about", 300, '#fff1d1'); 
+    setTopModal('about')
+  }
+  const openContactModal = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation()
+    openModal("contact", "contact")
+    setTopModal('contact')
+  }
 
   const mainText = "Hello, 'Yu-Hyun' World!"
 

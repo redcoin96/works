@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useState, useEffect } from "react";
 import styles from "./modalBar.module.scss";
 import classNames from "classnames/bind";
 import { ModalBarProps } from "./modalBar.types";
