@@ -6,5 +6,10 @@ const Main = dynamic(() => import("@/components/main/main"), {
 });
 
 export default function Home() {
-  return <Main />;
+  return (
+    <>
+     <Main />;
+     <div id="modal-root"/>
+     </>
+  )
 }

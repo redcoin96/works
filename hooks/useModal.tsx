@@ -1,21 +1,17 @@
-import { useState, useContext, useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import {
+  modalsState,
   modalCountState,
-  currentModalState,
   topModalZIndexState,
 } from "@/components/modal/store/atoms";
 import Modal from "@/components/modal/common/modal";
-import TypingText from "@/components/typingText/typingText";
-import { ReactElement } from "react";
 import MusicPlayer from "@/components/musicPlayer/musicPlayer";
 import About from "@/components/modal/about/about";
 import Contact from "@/components/modal/contact/contact";
 
 export const useModal = () => {
-  const [modals, setModals] = useState<ReactElement[]>([]);
+  const [modals, setModals] = useRecoilState(modalsState);
   const [modalCount, setModalCount] = useRecoilState(modalCountState);
-  const [currentModal, serCurrentModal] = useRecoilState(currentModalState);
   const [topModal, setTopModal] = useRecoilState(topModalZIndexState);
 
   const openModal = (title: string, content: string, width?: number, backgroundColor?:string) => {
@@ -33,14 +29,24 @@ export const useModal = () => {
         break;
     }
 
-    if (!currentModal.includes(content)) {
+    let hasActiveModal = false;
+
+    for(let i = 0; i<modals.length; i++){
+      const item = modals[i]
+      if(item.key === content) {
+        hasActiveModal = true;
+        return;
+      }
+    }
+
+    if (!hasActiveModal) {
       const newModalCount = modalCount + 1;
       setModalCount(newModalCount);
       setTopModal(content)
 
       const newModal = (
         <Modal
-          key={newModalCount}
+          key={content}
           initialZIndex={newModalCount}
           content={content}
           title={title}
@@ -52,9 +58,8 @@ export const useModal = () => {
       );
 
       setModals([...modals, newModal]);
-      serCurrentModal([...currentModal, content]);
     }
   };
 
-  return { openModal, modals };
+  return { openModal };
 };

@@ -2,12 +2,10 @@
 
 import React from "react";
 import styles from "./topBar.module.scss";
-import { useModal } from "@/hooks/useModal";
 import { useCurrentTime } from "@/hooks/useCurrentTime";
 import { useFullscreen } from "@/hooks/useFullScreen";
 
 export default function TopBar() {
-  const { openModal, modals } = useModal();
   const { isFullscreen, openfullscreen, closefullscreen } = useFullscreen();
 
   const currentTime = useCurrentTime();
@@ -27,7 +25,6 @@ export default function TopBar() {
           </li>
         </ul>
       </div>
-      {...modals}
     </>
   );
 }

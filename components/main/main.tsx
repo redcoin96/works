@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, ReactElement } from "react";
 import styles from "./main.module.scss";
 import Icon from "@/components/icon/icon";
 import { icon } from "@/components/icon/icon.helper";
@@ -10,37 +10,42 @@ import CustomCursor from "@/components/customCursor/customCursor";
 import MainModal from "@/components/modal/mainModal/mainModal";
 import InfiniteLooper from "@/components/infiniteLooper/infiniteLooper";
 import { useRecoilState } from "recoil";
-import { topModalZIndexState } from "../modal/store/atoms";
+import { topModalZIndexState, modalsState } from "../modal/store/atoms";
+import ReactDOM from "react-dom";
+import { mainText } from "../modal/mainModal/mainModal.helper";
 
 export default function Home() {
+  const [modals, setModals] = useRecoilState(modalsState);
   const [topModal, setTopModal] = useRecoilState(topModalZIndexState);
-
-  const { openModal, modals } = useModal();
+  const { openModal } = useModal();
 
   const openMusicModal = (e: React.MouseEvent<HTMLElement>) => {
-    e.stopPropagation()
-    openModal("music", "music"); 
-    setTopModal('music')
-  }
+    e.stopPropagation();
+    openModal("music", "music");
+    setTopModal("music");
+  };
   const openAboutModal = (e: React.MouseEvent<HTMLElement>) => {
-    e.stopPropagation()
-    openModal("about", "about", 300, '#fff1d1'); 
-    setTopModal('about')
-  }
+    e.stopPropagation();
+    openModal("about", "about", 300, "#fff1d1");
+    setTopModal("about");
+  };
   const openContactModal = (e: React.MouseEvent<HTMLElement>) => {
-    e.stopPropagation()
-    openModal("contact", "contact")
-    setTopModal('contact')
-  }
+    e.stopPropagation();
+    openModal("contact", "contact");
+    setTopModal("contact");
+  };
 
-  const mainText = "Hello, 'Yu-Hyun' World!"
+  useEffect(()=>{
+    setModals([<MainModal title="Welcome" text={mainText} key="main"/>]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return (
     <>
       <div className={styles.background}>
         <TopBar />
         <div className={styles.infiniteLooper}>
-        <InfiniteLooper text={mainText}/>
+          <InfiniteLooper text={mainText} />
         </div>
         <div className={styles.icons}>
           <Icon icon={icon.about} onClick={openAboutModal} />
@@ -48,10 +53,12 @@ export default function Home() {
           <Icon icon={icon.contact} onClick={openContactModal} />
           {/* <Icon icon={icon.music} onClick={openMusicModal} /> */}
         </div>
-        <MainModal title="Welcome" text={mainText}/>
-        {...modals}
       </div>
       <CustomCursor />
+      {ReactDOM.createPortal(
+        modals.map((modal) => modal as ReactElement),
+        document.getElementById("modal-root") as HTMLElement
+      )}
     </>
   );
 }

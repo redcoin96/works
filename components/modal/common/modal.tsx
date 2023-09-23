@@ -7,7 +7,7 @@ import classNames from "classnames/bind";
 import { ModalProps } from "./modal.types";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRecoilState } from "recoil";
-import { modalCountState, currentModalState, topModalZIndexState } from "../store/atoms";
+import { modalsState, modalCountState, topModalZIndexState } from "../store/atoms";
 import TopBar from "./modalBar/modalBar";
 
 const cx = classNames.bind(styles);
@@ -23,8 +23,8 @@ export default function Modal({
 }: ModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const [zIndex, setZIndex] = useState(initialZIndex);
+  const [modals, setModals] = useRecoilState(modalsState);
   const [modalCount, setModalCount] = useRecoilState(modalCountState);
-  const [currentModal, serCurrentModal] = useRecoilState(currentModalState);
   const [topModal, setTopModal] = useRecoilState(topModalZIndexState);
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
@@ -39,8 +39,8 @@ export default function Modal({
 
   const closeModal = () => {
     setIsModalOpen(false);
-    const newCurrentModal = currentModal.filter((item) => item !== content);
-    serCurrentModal(newCurrentModal);
+    const newModals = modals.filter(item => item.key !== content);
+    setModals(newModals)
   };
 
   const animateVariants = animation
