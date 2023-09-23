@@ -17,7 +17,7 @@
     @include button-style;
   }
 
-  .contact:hover {
-    @include button-style-hover;
+  .contact:active {
+    @include button-style-active;
   }
 }

@@ -6,7 +6,6 @@ import Icon from "@/components/icon/icon";
 import { icon } from "@/components/icon/icon.helper";
 import TopBar from "@/components/topBar/topBar";
 import { useModal } from "@/hooks/useModal";
-import CustomCursor from "@/components/customCursor/customCursor";
 import MainModal from "@/components/modal/mainModal/mainModal";
 import InfiniteLooper from "@/components/infiniteLooper/infiniteLooper";
 import { useRecoilState } from "recoil";
@@ -54,7 +53,7 @@ export default function Home() {
           {/* <Icon icon={icon.music} onClick={openMusicModal} /> */}
         </div>
       </div>
-      <CustomCursor />
+      {/* <CustomCursor /> */}
       {ReactDOM.createPortal(
         modals.map((modal) => modal as ReactElement),
         document.getElementById("modal-root") as HTMLElement

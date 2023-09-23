@@ -7,7 +7,8 @@
   outline: none;
   text-decoration: none;
   image-rendering: pixelated;
-
+  cursor: url('/images/cursor.svg'), auto;
+  
   &:focus {
     outline: none;
   }
@@ -24,7 +25,6 @@ body {
   font-size: 1.6rem;
   line-height: 1;
   overflow: hidden;
-  cursor: none;
 }
 
 html,
@@ -164,6 +164,7 @@ button {
   border-radius: 0;
   background: inherit;
   box-shadow: none;
+  cursor: pointer;
 }
 
 input,
@@ -171,5 +172,4 @@ textarea,
 button {
   font-family: inherit;
   color: inherit;
-  cursor: none;
 }

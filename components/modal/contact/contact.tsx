@@ -51,14 +51,14 @@ export default function Contact() {
         <form className={styles.contactForm} onSubmit={submitHandler}>
           <div className={styles.emailInput}>
             <label htmlFor="email">Email:</label>
-            <input ref={emailRef} type={"text"} name="email" id="email" autoComplete="off"/>
+            <input ref={emailRef} type={"text"} name="email" id="email" autoComplete="off" className={(neodgm.className)} />
           </div>
           <div className={styles.subjectInput}>
             <label htmlFor="subject">Title:</label>
-            <input ref={subjectRef} type={"text"} name="subject" id="subject" autoComplete="off"/>
+            <input ref={subjectRef} type={"text"} name="subject" id="subject" autoComplete="off" className={(neodgm.className)} />
           </div>
           <div className={styles.messageInput}>
-            <textarea ref={messageRef} name="message" id="message" className={(neodgm.className)} spellCheck="false"/>
+            <textarea ref={messageRef} name="message" id="message" className={(neodgm.className)} spellCheck="false" placeholder="메세지를 입력하세요.."/>
           </div>
           <div className={styles.buttonContainer}>
             <button className={styles.button}>Submit</button>

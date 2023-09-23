@@ -18,8 +18,8 @@
   margin-left: -2px;
 }
 
-.close:hover {
-  @include button-style-hover;
+.close:active {
+  @include button-style-active;
 }
 
 .stripe {

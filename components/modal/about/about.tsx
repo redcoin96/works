@@ -20,7 +20,6 @@ export default function About() {
     setTopModal('contact')
   }
   
-  
   return (
     <div className={styles.about}>
       <h2>About</h2>
