@@ -58,7 +58,7 @@ export default function Contact() {
             <input ref={subjectRef} type={"text"} name="subject" id="subject" autoComplete="off" className={(neodgm.className)} />
           </div>
           <div className={styles.messageInput}>
-            <textarea ref={messageRef} name="message" id="message" className={(neodgm.className)} spellCheck="false" placeholder="메세지를 입력하세요.."/>
+            <textarea ref={messageRef} name="message" id="message" className={(neodgm.className)} spellCheck="false" placeholder="message.."/>
           </div>
           <div className={styles.buttonContainer}>
             <button className={styles.button}>Submit</button>

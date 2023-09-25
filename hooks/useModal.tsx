@@ -8,6 +8,7 @@ import Modal from "@/components/modal/common/modal";
 import MusicPlayer from "@/components/musicPlayer/musicPlayer";
 import About from "@/components/modal/about/about";
 import Contact from "@/components/modal/contact/contact";
+import Projects from "@/components/modal/projects/projects";
 
 export const useModal = () => {
   const [modals, setModals] = useRecoilState(modalsState);
@@ -21,11 +22,14 @@ export const useModal = () => {
       case "about":
         modalContent = <About/>;
         break;
-      case "music":
-        modalContent = <MusicPlayer />;
+      case "projects":
+        modalContent = <Projects />;
         break;
       case "contact":
         modalContent = <Contact />;
+        break;
+      case "music":
+        modalContent = <MusicPlayer />;
         break;
     }
 

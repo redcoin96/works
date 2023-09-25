@@ -18,10 +18,10 @@ export default function Home() {
   const [topModal, setTopModal] = useRecoilState(topModalZIndexState);
   const { openModal } = useModal();
 
-  const openMusicModal = (e: React.MouseEvent<HTMLElement>) => {
+  const openProjectsModal = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
-    openModal("music", "music");
-    setTopModal("music");
+    openModal("projects", "projects");
+    setTopModal("projects");
   };
   const openAboutModal = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
@@ -48,7 +48,7 @@ export default function Home() {
         </div>
         <div className={styles.icons}>
           <Icon icon={icon.about} onClick={openAboutModal} />
-          <Icon icon={icon.projects} onClick={openMusicModal} />
+          <Icon icon={icon.projects} onClick={openProjectsModal} />
           <Icon icon={icon.contact} onClick={openContactModal} />
           {/* <Icon icon={icon.music} onClick={openMusicModal} /> */}
         </div>
