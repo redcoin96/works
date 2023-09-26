@@ -1,0 +1,94 @@
+.projectsContainer {
+  width: 500px;
+  height: 100%;
+  // padding: 35px 20px;
+}
+
+.title {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.projects {
+  overflow-y: scroll;
+  border: 1px solid black;
+  height: 393px;
+}
+
+.projects::-webkit-scrollbar {
+  width: 15px;  
+}
+
+.projects::-webkit-scrollbar-thumb {
+  height: 10%;
+  background: $pink; 
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.projects::-webkit-scrollbar-track {
+  background: $pink-dark; 
+  border-left: 1px solid black;
+}
+
+.project {
+  background-color: white;
+  border-bottom: 1px solid black;
+}
+
+.image {
+  padding: 10px;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 6/3;
+
+  img{
+    image-rendering: auto;
+  }
+}
+
+.about {
+  padding: 20px;
+}
+
+.projectName, .description, .tagContainer {
+  color: black;
+}
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.projectName {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.description {
+  margin-bottom: 20px;
+}
+
+.description, .tag {
+  font-size: 12px;
+}
+
+.button {
+  @include button-style;
+}
+
+.button:active {
+  @include button-style-active;
+}
+
+.tag {
+  padding: 2px 5px;
+  background-color: rgb(235 235 235);;
+}
+
+// .tag {
+//   color: rgb(216, 20, 216);
+// }

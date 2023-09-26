@@ -3,6 +3,10 @@
   width: 520px;
   aspect-ratio: 3 / 3;
 
+  img {
+    image-rendering: auto;
+  }
+
   @include mobile {
     width: 100%;
   }

@@ -1,5 +1,10 @@
 interface Projects {
-  [key: string]: string;
+  "projectName": string,
+  "description": string,
+  "tag": string[],
+  "image": string,
+  "projectUrl": string,
+  "githubUrl": string
 }
 
 export const getProjects = async (): Promise<

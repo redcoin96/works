@@ -1,23 +1,30 @@
 .about {
-  padding: 20px;
+  padding: 35px 20px;
+  width: 400px;
+  // font-weight: bold;
 
   h2 {
     font-size: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
   }
 
   p {
-    font-size: 12px;
-    line-height: 1.4;
-    word-break: keep-all;
-    margin-bottom: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-weight: normal;
   }
 
-  .contact {
+  .buttonContainer {
+    display: flex;
+    gap: 10px;
+  }
+
+  .button {
     @include button-style;
   }
 
-  .contact:active {
+  .button:active {
     @include button-style-active;
   }
 }

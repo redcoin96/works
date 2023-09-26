@@ -25,7 +25,7 @@ export default function Home() {
   };
   const openAboutModal = (e: React.MouseEvent<HTMLElement>) => {
     e.stopPropagation();
-    openModal("about", "about", 300, "#fff1d1");
+    openModal("about", "about");
     setTopModal("about");
   };
   const openContactModal = (e: React.MouseEvent<HTMLElement>) => {
@@ -43,9 +43,9 @@ export default function Home() {
     <>
       <div className={styles.background}>
         <TopBar />
-        <div className={styles.infiniteLooper}>
+        {/* <div className={styles.infiniteLooper}> */}
           <InfiniteLooper text={mainText} />
-        </div>
+        {/* </div> */}
         <div className={styles.icons}>
           <Icon icon={icon.about} onClick={openAboutModal} />
           <Icon icon={icon.projects} onClick={openProjectsModal} />

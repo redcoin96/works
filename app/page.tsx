@@ -9,7 +9,6 @@ const Main = dynamic(() => import("@/components/main/main"), {
 });
 
 export default async function Home() {
-  // const cachedData = await getProjects()
 
   const queryClient = getQueryClient();
   await queryClient.prefetchQuery(["projects"], getProjects);

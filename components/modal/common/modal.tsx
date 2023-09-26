@@ -18,7 +18,6 @@ export default function Modal({
   children,
   animation = true,
   content,
-  width,
   backgroundColor,
 }: ModalProps) {
   const [isModalOpen, setIsModalOpen] = useState(true);
@@ -80,7 +79,7 @@ export default function Modal({
               handle=".bar"
               // onStart={handleClick(e)}
             >
-              <div className={styles.draggable} style={{ zIndex, width }}>
+              <div className={styles.draggable} style={{ zIndex }}>
                 <motion.div
                   initial={initialVariants}
                   animate={animateVariants}

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
-  const { email, subject, message } = await req.json();
+  const { email, message } = await req.json();
 
   try {
     const transporter = nodemailer.createTransport({
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     const mailOptions = {
       from: process.env.AUTH_USER, 
       to: process.env.AUTH_USER, 
-      subject: subject,
+      subject: 'send from portfolio',
       html: `
         <p>${message}</p><br/>
         <p>발신메일 : ${email}</p>

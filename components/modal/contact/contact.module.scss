@@ -1,16 +1,23 @@
 .contact {
   width: 500px;
-  padding: 20px;
+  padding: 35px 20px;
 
   @include mobile {
     width: 100%;
   }
 
-  h2,
+  h2 {
+    margin-bottom: 30px;
+    font-size: 20px;
+  }
+
   .emailInput,
-  .subjectInput,
-  .messageInput {
+  .subjectInput {
     margin-bottom: 10px;
+  }
+
+  .messageInput {
+    margin-bottom: 30px;
   }
 
   .emailInput,
@@ -21,8 +28,8 @@
 
     input {
       width: 100%;
-      height: 25px;
-      padding: 0 5px;
+      height: 30px;
+      // padding: 10px;
     }
   }
 
@@ -33,8 +40,16 @@
 
   input,
   textarea {
-    border: 1px solid black;
+    border: 1.5px solid black;
+    font-size: 14px;
+    padding: 10px;
+    box-shadow: 1px 1px #fff, -1px -1px #bbb;
     border-radius: 2px;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgb(0, 0, 0);
     font-size: 14px;
   }
 
@@ -42,7 +57,7 @@
     textarea {
       width: 100%;
       height: 200px;
-      padding: 10px;
+      // padding: 10px;
     }
   }
 

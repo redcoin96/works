@@ -28,4 +28,21 @@ export const chicagoFLF = localFont({
       style: "normal",
     },
   ],
+
 });
+
+export const EliceDigitalBaeum = localFont({
+  src: [
+    {
+      path: "../public/fonts/EliceDigitalBaeum_Regular.ttf",
+      weight: "400",
+      style: "regular",
+    },
+    {
+      path: "../public/fonts/EliceDigitalBaeum_Bold.ttf",
+      weight: "500",
+      style: "bold",
+    },
+  ],
+});
+

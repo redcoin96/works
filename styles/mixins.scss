@@ -11,14 +11,74 @@
 }
 
 @mixin button-style {
-  width: 100%;
-  border: 1px solid black;
-  padding: 7px;
-  border-radius: 4px;
+  // width: 100%;
+  // border: 1.5px solid black;
+  // padding: 7px;
+  // // border-radius: 4px;
+  // font-size: 12px;
+  // box-shadow: 2px 2px #1d1d1d;
   font-size: 12px;
+  width: 120px;
+  height: 35px;
+  background: #eaeaea;
+  border: 0px;
+  position: relative;
+  box-shadow: inset -2px 2px 1px 1px #ffffff, inset -2px -2px 1px 1px #9e9e9e,
+    inset 2px 0px 1px 1px #c1c1c1, 0 -1.5px black, 1.5px 0px black,
+    -1.5px 0px black, 0 1.5px black;
 }
 
 @mixin button-style-active {
-  background-color: black;
-  color: white;
+  // background-color: black;
+  // color: white;
+  top: 2px;
 }
+
+// .btn {
+//   font-size: 1.2em;
+//   font-family: 'Press Start 2P', cursive;
+//   width: 200px;
+//   height: 70px;
+//   background: #06C1DE;
+//   border: 0px;
+//   position: relative;
+//   box-shadow: 
+//     inset -4px 2px 1px 1px grey,
+//     inset -4px -2px 1px 1px lightgray,
+//     inset 4px 0px 1px 1px lightgray;   
+// }
+
+// .btn:hover {
+//   cursor: pointer;
+// 	background-color: #06B6D1;
+// }
+
+// .btn:active {
+//   top: 5px;
+//   box-shadow: 
+//     -4px 2px 1px 1px grey,
+//     -4px -2px 1px 1px lightgray,
+//     4px 0px 1px 1px lightgray; 
+// }
+
+// .btn::after {
+//   content: '';
+//   background: black;
+//   position: absolute;
+//   left: -2.5%;
+//   top: 0;
+//   width: 105%;
+//   height: 100%;
+//   z-index: -1;
+// }
+
+// .btn::before {
+//   content: '';
+//   background: black;
+//   position: absolute;
+//   left: 0;
+//   top: -5%;
+//   width: 100%;
+//   height: 113%;
+//   z-index: -1;
+// }
