@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <>
       <Hydrate state={dehydratedState}>
-        <Main />;
+        <Main />
         <div id="modal-root" />
       </Hydrate>
     </>
