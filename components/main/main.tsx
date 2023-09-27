@@ -44,7 +44,7 @@ export default function Home() {
       <div className={styles.background}>
         <TopBar />
         {/* <div className={styles.infiniteLooper}> */}
-          <InfiniteLooper text={mainText} />
+          {/* <InfiniteLooper text={mainText} /> */}
         {/* </div> */}
         <div className={styles.icons}>
           <Icon icon={icon.about} onClick={openAboutModal} />

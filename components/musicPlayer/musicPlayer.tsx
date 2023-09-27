@@ -96,7 +96,7 @@ const MusicPlayer: React.FC = () => {
             <span> / </span>
             <span>{formatTime(duration)}</span>
           </div>
-          {/* <input
+          <input
             type="range"
             min={0}
             max={duration || 100}
@@ -107,7 +107,7 @@ const MusicPlayer: React.FC = () => {
                 audioRef.current.currentTime = Number(e.target.value);
               }
             }}
-          /> */}
+          />
         </div>
       </div>
     </>

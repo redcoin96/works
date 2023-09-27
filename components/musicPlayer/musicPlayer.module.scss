@@ -1,5 +1,5 @@
 .musicPlayer {
-  width: 300px;
+  width: 500px;
 
   input[type="range"] {
     -webkit-appearance: none;
@@ -22,8 +22,9 @@
 .cd {
   position: relative;
   flex-shrink: 0;
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  aspect-ratio: 1/1;
+  // height: 500px;
 }
 
 .paused {

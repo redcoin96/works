@@ -11,12 +11,11 @@
 
 .projects {
   overflow-y: scroll;
-  border: 1px solid black;
   height: 393px;
 }
 
 .projects::-webkit-scrollbar {
-  width: 15px;  
+  width: 22.5px;  
 }
 
 .projects::-webkit-scrollbar-thumb {
