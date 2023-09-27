@@ -14,20 +14,17 @@ export default function Contact() {
 
   const submitHandler = async (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (emailRef.current && subjectRef.current && messageRef.current) {
+    
+    if (emailRef.current && messageRef.current) {
       const email = emailRef.current.value;
-      const subject = subjectRef.current.value;
       const message = messageRef.current.value;
 
       await sendEmail({
         email,
-        subject,
         message,
       });
 
       emailRef.current.value = "";
-      subjectRef.current.value = "";
       messageRef.current.value = "";
 
       setSubmitComplete(true);

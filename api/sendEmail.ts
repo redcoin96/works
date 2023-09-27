@@ -1,10 +1,9 @@
 interface Email {
   email: string;
-  subject: string;
   message: string;
 };
 
-export const sendEmail = async ({ email, subject, message }: Email) => {
+export const sendEmail = async ({ email, message }: Email) => {
   try {
     const res = await fetch("/api/contact", {
       method: "POST",
@@ -13,7 +12,6 @@ export const sendEmail = async ({ email, subject, message }: Email) => {
       },
       body: JSON.stringify({
         email,
-        subject,
         message,
       }),
     });
