@@ -34,10 +34,10 @@ export default function Home() {
     setTopModal("contact");
   };
 
-  useEffect(()=>{
-    setModals([<MainModal title="Welcome" text={mainText} key="main"/>]);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  // useEffect(()=>{
+  //   setModals([<MainModal title="Welcome" text={mainText} key="main"/>]);
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // },[])
 
   return (
     <>

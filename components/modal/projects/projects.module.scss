@@ -1,5 +1,5 @@
 .projectsContainer {
-  width: 500px;
+  // width: 500px;
   height: 100%;
   // padding: 35px 20px;
 }
@@ -11,7 +11,7 @@
 
 .projects {
   overflow-y: scroll;
-  height: 393px;
+  height: 412px;
 }
 
 .projects::-webkit-scrollbar {
@@ -20,14 +20,16 @@
 
 .projects::-webkit-scrollbar-thumb {
   height: 10%;
-  background: $pink; 
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  // background: $pink; 
+  background: rgb(196, 196, 196); 
+  // border-top: 1px solid black;
+  // border-bottom: 1px solid black;
   border-left: 1px solid black;
 }
 
 .projects::-webkit-scrollbar-track {
-  background: $pink-dark; 
+  // background: $pink-dark; 
+  background: rgb(238, 238, 238); 
   border-left: 1px solid black;
 }
 

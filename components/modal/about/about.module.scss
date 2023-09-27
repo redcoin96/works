@@ -1,7 +1,11 @@
 .about {
   padding: 35px 20px;
-  width: 400px;
   // font-weight: bold;
+  width: 400px;
+
+  @include mobile {
+    width: 100%;
+  }
 
   h2 {
     font-size: 20px;
