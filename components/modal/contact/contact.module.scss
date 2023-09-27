@@ -42,7 +42,7 @@
   input,
   textarea {
     border: 1.5px solid black;
-    font-size: 14px;
+    font-size: 16px;
     padding: 10px;
     box-shadow: 1px 1px #fff, -1px -1px #bbb;
     border-radius: 2px;
@@ -51,7 +51,7 @@
   input::placeholder,
   textarea::placeholder {
     color: rgb(0, 0, 0);
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .messageInput {
